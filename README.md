@@ -106,10 +106,19 @@ html {
 }
 ```
 
+#### Line height correction in all browsers
+
+```css
+html {
+  line-height: 1.15;
+}
+```
+
 ##### Tabs appear the same on the web as in a typical editor
 
 ```css
 html {
+  -moz-tab-size: 4;
   tab-size: 4;
 }
 ```
@@ -118,7 +127,34 @@ html {
 
 ```css
 html {
-  word-break: break-all;
+  word-break: break-word;
+}
+```
+
+##### Prevent adjustments of font size after orientation changes in IE on Windows Phone and in iOS
+
+```css
+html {
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+```
+
+##### Font rendering settings;  1x => subpixel、2x or higher => grayscale http://creator.dwango.co.jp/14128.html
+
+```css
+html {
+  -webkit-font-smoothing: subpixel-antialiased;
+  -moz-osx-font-smoothing: unset;
+}
+
+@media only screen and
+  (-webkit-min-device-pixel-ratio: 2),
+  (min-resolution: 2dppx) {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
 }
 ```
 
@@ -130,11 +166,63 @@ body {
 }
 ```
 
+##### `h1` font-size and margin correction
+
+```css
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+```
+
+##### `hr` sizing correction in Firefox. Show the overflow in Edge and IE
+
+```css
+hr {
+  height: 0;
+  overflow: visible;
+}
+```
+
+##### `main` display correction in IE
+
+```css
+main {
+  display: block;
+}
+```
+
 ##### Navigation lists do not include a marker style
 
 ```css
 nav ol, nav ul {
   list-style: none;
+}
+```
+
+##### Active link's gray background removal in IE 10
+
+```css
+a {
+  background-color: transparent;
+}
+```
+
+##### Abbreviations's title text decoration correction in Edge, IE, Opera, and Safari
+
+```css
+abbr[title] {
+  text-decoration: underline;
+  text-decoration: underline dotted;
+}
+```
+
+##### `b` and `strong` font weight correction in Chrome, Edge, and Safari
+
+```css
+b,
+strong {
+  font-weight: bolder;
 }
 ```
 
@@ -154,9 +242,30 @@ code, kbd, pre, samp {
 }
 ```
 
+##### Pre-formatted and code-formatted text font-size
+
+```css
+code, kbd, pre, samp {
+  font-size: 1em;
+}
+```
+
+##### `small` font-size correction
+
+```css
+small {
+  font-size: 80%;
+}
+```
 ##### Text selections do not include text shadows
 
 ```css
+::-moz-selection {
+  background-color: #b3d4fc;
+  color: #000;
+  text-shadow: none;
+}
+
 ::selection {
   background-color: #b3d4fc;
   color: #000;
@@ -172,11 +281,45 @@ audio, canvas, iframe, img, svg, video {
 }
 ```
 
+##### `video` and `audio` display correction in IE 9-
+
+```css
+audio,
+video {
+  display: inline-block;
+}
+```
+
+##### `audio` display correction in iOS 4-7
+
+```css
+audio:not([controls]) {
+  display: none;
+  height: 0;
+}
+```
+
+##### Image inside link should has no border in IE 10-
+
+```css
+img {
+  border-style: none;
+}
+```
+
 ##### SVGs fallback to the current text color
 
 ```css
 svg:not([fill]) {
   fill: currentColor;
+}
+```
+
+##### SVGs hide overflow in IE
+
+```css
+svg:not(:root) {
+  overflow: hidden;
 }
 ```
 
@@ -198,11 +341,264 @@ button, input, select, textarea {
 }
 ```
 
+##### `button`, `input`, `select` should have no margin in Safari
+
+```css
+button,
+input,
+select {
+  margin: 0;
+}
+```
+
+##### `button` show the overflow in IE
+
+```css
+button {
+  overflow: visible;
+}
+```
+
+##### `button` should not inheri text transform in Edge, Firefox, and IE
+
+```css
+button {
+  text-transform: none;
+}
+```
+
+##### Clickable types should be stylable in iOS and Safari
+
+```css
+button,
+[type="button"],
+[type="reset"],
+[type="submit"] {
+  -webkit-appearance: button;
+}
+```
+
+##### `fieldset` padding correction in Firefox
+
+```css
+fieldset {
+  padding: 0.35em 0.75em 0.625em;
+}
+```
+
+##### `input` shows overflow in Edge and IE
+
+```css
+input {
+  overflow: visible;
+}
+```
+
+##### `legend` text wrapping correction in Edge and IE
+
+```css
+legend {
+  display: table;
+  max-width: 100%;
+  white-space: normal;
+}
+```
+
+##### `legend` should inherit color from `fieldset` elements in IE
+
+```css
+legend {
+  color: inherit;
+}
+```
+
+##### `progress`: Add the correct display in Edge and IE
+
+```css
+progress {
+  display: inline-block;
+}
+```
+
+##### `progress`: Add the correct vertical alignment in Chrome, Firefox, and Opera
+
+```css
+progress {
+  vertical-align: baseline;
+}
+```
+
+##### `select`: Remove the inheritance of text transform in Firefox
+
+```css
+select {
+  text-transform: none;
+}
+```
+
 ##### Textareas only resize vertically by default
 
 ```css
 textarea {
   resize: vertical;
+}
+```
+
+##### Textareas has no margin in Firefox and  Safari
+
+```css
+textarea {
+  margin: 0;
+}
+```
+
+##### Textareas's default vertical scrollbar removal in IE
+
+```css
+textarea {
+  overflow: auto;
+}
+```
+
+##### Checkboxes and radios padding removal on IE 10-
+
+```css
+[type="checkbox"],
+[type="radio"] {
+  padding: 0;
+}
+```
+
+##### Search input odd appearance correction in Chrome and Safari
+
+```css
+[type="search"] {
+  -webkit-appearance: textfield;
+}
+```
+
+##### Search input outline style correction in Safari
+
+```css
+[type="search"] {
+  outline-offset: -2px;
+}
+```
+
+##### increment and decrement buttons cursor style correction in Safari
+
+```css
+::-webkit-inner-spin-button,
+::-webkit-outer-spin-button {
+  height: auto;
+}
+```
+
+##### Placeholders text style correction in Chrome, Edge and Safari
+
+```css
+::-webkit-input-placeholder {
+  color: inherit;
+  opacity: 0.54;
+}
+```
+
+##### Search input inner padding removal in Chrome and Safari on macOS
+
+```css
+::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+```
+
+##### File upload button: Correct the inability to style clickable types in iOS and Safari
+
+```css
+::-webkit-file-upload-button {
+  -webkit-appearance: button;
+}
+```
+
+##### File upload button: Change font properties to `inherit` in Safari
+
+```css
+::-webkit-file-upload-button {
+  font: inherit;
+}
+```
+
+##### Focus outline: remove the inner border and padding in Firefox
+
+```css
+::-moz-focus-inner {
+  border-style: none;
+  padding: 0;
+}
+```
+
+##### Focus outline: restore the focus styles unset by the previous rule in Firefox
+
+```css
+:-moz-focusring {
+  outline: 1px dotted ButtonText;
+}
+```
+
+##### Details: display correction in Edge and IE
+
+```css
+details {
+  display: block;
+}
+```
+
+##### Dialogs: style correction in Edge, IE and Safari
+
+```css
+dialog {
+  background-color: white;
+  border: solid;
+  color: black;
+  display: block;
+  height: -moz-fit-content;
+  height: -webkit-fit-content;
+  height: fit-content;
+  left: 0;
+  margin: auto;
+  padding: 1em;
+  position: absolute;
+  right: 0;
+  width: -moz-fit-content;
+  width: -webkit-fit-content;
+  width: fit-content;
+}
+
+dialog:not([open]) {
+  display: none;
+}
+```
+
+##### Summary: correct display in all browsers
+
+```css
+summary {
+  display: list-item;
+}
+```
+
+##### Canvas: display correction in IE 9-
+
+```css
+canvas {
+  display: inline-block;
+}
+```
+
+##### Temmplate: display correction in IE
+
+```css
+template {
+  display: none;
 }
 ```
 
@@ -212,6 +608,14 @@ textarea {
 a, area, button, input, label, select, summary, textarea, [tabindex] {
   -ms-touch-action: manipulation;
   touch-action: manipulation;
+}
+```
+
+##### Correct display of hidden element in IE 10-
+
+```css
+[hidden] {
+  display: none;
 }
 ```
 
@@ -227,7 +631,7 @@ a, area, button, input, label, select, summary, textarea, [tabindex] {
 }
 
 [aria-disabled="true"], [disabled] {
-  cursor: default;
+   cursor: not-allowed;
 }
 ```
 
