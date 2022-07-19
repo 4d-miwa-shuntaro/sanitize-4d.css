@@ -5,6 +5,8 @@
 [sanitize-4d.css] is a CSS library that provides consistent, cross-browser
 default styling of HTML elements alongside useful defaults.
 
+Package's version is the same as that in `sanitize-4d.css` file
+
 
 ## How to get it
 
