@@ -1,5 +1,12 @@
 # Changes to sanitize.css
 
+### 9.0.0 (October 11, 2022)
+
+- Changed: sanitize.css version
+  https://github.com/csstools/sanitize.css/releases/tag/v13.0.0
+- Added: :where too all selectors, reducing specificity to nearly zero.
+- Added: `sanitize.css/forms.css`, `sanitize.css/assets.css`, `sanitize.css/typography.css` and `sanitize.css/reduce-motion.css` css in the `sanitize-4d.css` file
+
 ### 8.0.0 (October 8, 2018)
 
 - Changed: Apply `aria-disabled` disabled styles when `[aria-disabled="true"]`
