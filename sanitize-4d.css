@@ -480,3 +480,26 @@ pre {
     transition-duration: 0s !important; /* 4 */
   }
 }
+
+/**
+ * Fourdigit Orinal rule
+ */
+
+/**
+ * Font rendering settings;
+ * 1x => subpixel、2x or higher => grayscale http://creator.dwango.co.jp/14128.html
+ */
+
+:where(html) {
+  -webkit-font-smoothing: subpixel-antialiased;
+  -moz-osx-font-smoothing: unset;
+}
+
+@media only screen and
+  (-webkit-min-device-pixel-ratio: 2),
+  (min-resolution: 2dppx) {
+  :where(html) {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
