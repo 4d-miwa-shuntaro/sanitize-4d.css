@@ -327,6 +327,24 @@ code, kbd, pre, samp {
 }
 ```
 
+##### Font rendering settings;  1x => subpixel、2x or higher => grayscale http://creator.dwango.co.jp/14128.html
+
+```css
+html {
+  -webkit-font-smoothing: subpixel-antialiased;
+  -moz-osx-font-smoothing: unset;
+}
+
+@media only screen and
+  (-webkit-min-device-pixel-ratio: 2),
+  (min-resolution: 2dppx) {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+```
+
 ## Differences
 
 [normalize.css] and [sanitize-4d.css] correct browser bugs while carefully testing
